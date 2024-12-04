@@ -1,0 +1,93 @@
+/* mystyle.css */
+
+body {
+    background-color: #ADD8E6;
+    font-family: "Poppins", sans-serif;
+}
+
+h1, h2 {
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+}
+
+/* Main styling for the container */
+#main {
+    background-color: pink;
+    color: white;
+    border-radius: 5px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Form input styling */
+input[type="text"], input[type="password"], input[type="submit"], button {
+    color: white;
+    background-color: pink;
+    border: 2px solid pink;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Project card style */
+.project-card {
+    background-color: pink;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 200px;
+    background-color: pink;
+    position: fixed;
+    height: 100%;
+    padding-top: 20px;
+    overflow-x: hidden;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #111;
+}
+
+/* Add project button */
+.add-project-btn {
+    display: block;
+    background-color: pink;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 20px auto;
+    width: 150px;
+}
+
+p, a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        input[type="submit"] {
+            background-color: white;
+            color: pink;
+            border: 2px solid pink;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
