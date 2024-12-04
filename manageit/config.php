@@ -3,7 +3,7 @@
 $host = 'localhost';
 $database = 'manageit';
 $user = 'jaelyn';
-$pass = '8150';
+$pass = '';
 
 try {
     // Data Source Name (DSN) specifying the MySQL database
