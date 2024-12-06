@@ -53,9 +53,9 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    
-<div class="form-container">
+<div style="background-color:lightblue;" class="form-container">
 
-   <form action="" method="post">
+   <form action="" method="post" style="background-color:pink;">
       <h3>login now</h3>
       <?php
       if(isset($error)){
