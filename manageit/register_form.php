@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    
-<div style="background-color:pink;" class="form-container">
+<div style="background-color:lightblue;" class="form-container">
 
    <form action="" method="post" style="background-color:pink;">
       <h3>register now</h3>
