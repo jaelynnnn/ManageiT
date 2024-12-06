@@ -48,9 +48,9 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    
-<div class="form-container">
+<div style="background-color:pink;" class="form-container">
 
-   <form action="" method="post">
+   <form action="" method="post" style="background-color:pink;">
       <h3>register now</h3>
       <?php
       if(isset($error)){
