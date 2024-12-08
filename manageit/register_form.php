@@ -47,7 +47,10 @@ if(isset($_POST['submit'])){
 
 </head>
 <body>
-   
+  <div id="header" style="background-color:lightblue;">
+        <h1 style="color:white;">ManageiT</h1>
+        <p style="color:white;"><a href="company_register.php" style="color:white;">Register Company</a> | <a href="company_login.php" style="color:white;">Company Login</a> | <a href="index.php" style="color:white;">Home Page</a></p>
+   </div> 
 <div style="background-color:lightblue;" class="form-container">
 
    <form action="" method="post" style="background-color:pink;">
