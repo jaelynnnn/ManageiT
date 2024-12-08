@@ -47,13 +47,16 @@ if(isset($_POST['submit'])){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>login form</title>
 
-   <!-- custom css file link  -->
+   
    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
-   
-<div style="background-color:lightblue;" class="form-container">
+  <div id="header" style="background-color:lightblue;">
+        <h1 style="color:white;">ManageiT</h1>
+        <p style="color:white;"><a href="company_register.php" style="color:white;">Register Company</a> | <a href="company_login.php" style="color:white;">Company login</a></p>
+  </div> 
+   <div style="background-color:lightblue;" class="form-container">
 
    <form action="" method="post" style="background-color:pink;">
       <h3>login now</h3>
