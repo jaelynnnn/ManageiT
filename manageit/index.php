@@ -38,8 +38,6 @@
             <a href="company_register.php">Company Register</a><br></br>
             <a href="company_login.php">Company Login</a><br></br>
             <a href="employee_login.php">Staff login</a>
-	    <a href="login_form.php">Login</a>
-	    <a href="register_form.php">Register</a>
         </div>
     </div>
 </body>
