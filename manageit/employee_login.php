@@ -1,33 +1,42 @@
-<!-- employee_login.php / the employee login page (not yet conplete) -->
 <?php
 require 'config.php';
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $staffEmail = $_POST['staff_email'];
+    $companyKey = $_POST['company_key'];
 
     try {
-        $sql = "SELECT * FROM staff WHERE staff_email = :email";
+        $sql = "SELECT * FROM staff WHERE staff_email = :email AND company_key = :key";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $staffEmail);
+        $stmt->bindParam(':key', $companyKey);
         $stmt->execute();
+
         $staff = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($staff) {
             $_SESSION['staff_id'] = $staff['staff_id'];
             $_SESSION['staff_name'] = $staff['staff_name'];
-			$_SESSION['staff_id'] = $staff['staff_id'];
+            $_SESSION['company_key'] = $staff['company_key'];
+
+            $loginTime = date("Y-m-d H:i:s");
+            $logSql = "INSERT INTO login_logs (staff_id, login_time) VALUES (:staff_id, :login_time)";
+            $logStmt = $pdo->prepare($logSql);
+            $logStmt->bindParam(':staff_id', $staff['staff_id']);
+            $logStmt->bindParam(':login_time', $loginTime);
+            $logStmt->execute();
+
             header("Location: dashboard.php");
             exit();
         } else {
-            echo "Invalid credentials.";
+            echo "<p style='color: red; text-align: center;'>Invalid email or company key.</p>";
         }
     } catch (PDOException $e) {
-        echo "Database error: " . $e->getMessage();
+        echo "<p style='color: red; text-align: center;'>Database error: " . $e->getMessage() . "</p>";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,10 +113,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id="main">
         <h2>Employee Login</h2>
         <form action="employee_login.php" method="POST">
-            <label>Employee Name:</label><br>
-            <input type="text" name="staff_name" required><br>
-			<label>company key:</label><br>
-            <input type="password" name="staff_name" required><br>
+            <label>Employee Email:</label><br>
+            <input type="text" name="staff_email" required><br>
+            <label>Company Key:</label><br>
+            <input type="password" name="company_key" required><br>
             <input type="submit" value="Login">
         </form>
     </div>
