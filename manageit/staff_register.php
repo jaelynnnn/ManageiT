@@ -1,4 +1,37 @@
-<!-- staff_registration.html / this page is for registering staff-->
+<?php
+require 'config.php'; // Database configuration file
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Capture form data
+    $staffName = $_POST['staff_name'];
+    $staffEmail = $_POST['staff_email'];
+    $companyKey = $_POST['company_key'];
+
+    // Debugging: Display captured form data
+    echo "Staff Name: " . $staffName . "<br>";
+    echo "Staff Email: " . $staffEmail . "<br>";
+    echo "Company Key: " . $companyKey . "<br>";
+
+    try {
+        // Insert staff details into the database
+        $sql = "INSERT INTO staff (staff_name, staff_email, company_key) VALUES (:staff_name, :staff_email, :company_key)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':staff_name', $staffName);
+        $stmt->bindParam(':staff_email', $staffEmail);
+        $stmt->bindParam(':company_key', $companyKey);
+        $stmt->execute();
+
+        echo "<p style='color: green; text-align: center;'>Staff successfully registered!</p>";
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) { // Duplicate entry error
+            echo "<p style='color: red; text-align: center;'>Email already exists. Please use a different email.</p>";
+        } else {
+            echo "<p style='color: red; text-align: center;'>Database error: " . $e->getMessage() . "</p>";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,14 +54,12 @@
 
       .menu {
         margin-bottom: 20px;
-        font-weight:
-          bold;
+        font-weight: bold;
         cursor: pointer;
       }
 
       .menu:hover {
         opacity: 0.8;
-        #
       }
 
       .main-content {
@@ -38,28 +69,9 @@
         color: white;
       }
 
-      .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-
-      .add-project-btn {
-        background-color: pink;
-        color: white;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 5px;
-      }
-
-      .add-project-btn:hover {
-        opacity: 0.9;
-      }
-
       body {
         background-color: #ADD8E6;
-        font-family: poppins;
+        font-family: Poppins, sans-serif;
       }
 
       h2 {
@@ -67,10 +79,6 @@
         text-align: center;
         text-decoration: underline;
         text-decoration-color: white;
-      }
-
-      p {
-        font-size: 20px;
       }
 
       #main {
@@ -98,18 +106,6 @@
         margin-bottom: 15px;
       }
 
-      h1 {
-        text-align: left;
-        color: white;
-      }
-
-      p,
-      a {
-        font-size: 20px;
-        color: white;
-        text-decoration: none;
-      }
-
       input[type="submit"] {
         background-color: white;
         color: pink;
@@ -121,39 +117,36 @@
         cursor: pointer;
       }
     </style>
-    </head>
-    <body>
-      <div class="container">
-        <div class="sidebar">
-          <h2>ManageiT</h2>
-          <div class="sidebar">
-            <div class="menu">
-              <a href="dashboard.php" style="color: white; text-decoration: none;">Dashboard</a>
-            </div>
-            <div class="menu">
-              <a href="project_list.php" style="color: white; text-decoration: none;">Projects</a>
-            </div>
-            <div class="menu">
-              <a href="staff_register.php" style="color: white; text-decoration: none;">Register Staff</a>
-            </div>
-            <div class="menu">
-              <a href="create_task.php" style="color: white; text-decoration: none;">Create Tasks</a>
-            </div>
-          </div>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h2>ManageiT</h2>
+        <div class="menu">
+          <a href="dashboard.php" style="color: white; text-decoration: none;">Dashboard</a>
         </div>
-        <div id="main">
-          <h2>Register Employee</h2>
-          <form action="staff_registration.php" method="POST">
-            <label>Staff Name</label>
-            <input type="text" name="staff_name" required>
-            <br></br>
-            <label>Staff Email</label>
-            <input type="text" name="staff_email" required>
-            <br></br>
-            <label>Company key</label>
-            <input type="password" name="company key" required>
-          </form>
+        <div class="menu">
+          <a href="project_list.php" style="color: white; text-decoration: none;">Projects</a>
+        </div>
+        <div class="menu">
+          <a href="staff_register.php" style="color: white; text-decoration: none;">Register Staff</a>
         </div>
       </div>
-    </body>
+      <div id="main">
+        <h2>Register Employee</h2>
+        <form action="staff_register.php" method="POST">
+          <label>Staff Name</label>
+          <input type="text" name="staff_name" required>
+          <br>
+          <label>Staff Email</label>
+          <input type="text" name="staff_email" required>
+          <br>
+          <label>Company Key</label>
+          <input type="password" name="company_key" required>
+          <br>
+          <input type="submit" value="Register">
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
