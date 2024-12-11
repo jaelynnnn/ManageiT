@@ -1,4 +1,4 @@
-<!-- task_list.php -->
+<!-- task.php -->
 <?php
 require 'config.php';
 
@@ -16,7 +16,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task List</title>
+    <title>Task </title>
     <style>
         body { 
 		font-family: "Poppins", sans-serif; 
@@ -49,23 +49,19 @@ try {
 </head>
 <body>
     <div class="table-container">
-        <h2>Task List</h2>
+        <h2>Task </h2>
         <table>
             <tr>
                 <th>Task Title</th>
-                <th>Name of 1st person assigned to task</th>
-				<th>Name of 2nd person assigned to task</th>
-				<th>Name of 3rd person assigned to task</th>
+                <th>Name of person assigned to task</th>
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Delete Task</th>
             </tr>
-            <?php foreach ($task as $task): ?>
+            <?php foreach ($tasks as $task): ?>
             <tr>
                 <td><?php echo htmlspecialchars($task['task_title']); ?></td>
-                <td><?php echo htmlspecialchars($task['first_assignee']); ?></td>
-				<td><?php echo htmlspecialchars($task['second_assignee']); ?></td>
-				<td><?php echo htmlspecialchars($task['third_assignee']); ?></td>
+                <td><?php echo htmlspecialchars($task['task_assignee']); ?></td>
                 <td><?php echo htmlspecialchars($task['task_start']); ?></td>
                 <td><?php echo htmlspecialchars($task['task_end']); ?></td>
                 <td>
