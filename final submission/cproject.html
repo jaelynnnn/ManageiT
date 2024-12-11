@@ -1,0 +1,143 @@
+<!-- cproject.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Dashboard</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+         .container {
+			display: flex; 
+			height: 100vh; 
+		}
+		
+        .sidebar { 
+			width: 20%; 
+			background-color: pink; 
+			color: white; 
+			padding: 20px; 
+		}
+		
+        .menu { 
+			margin-bottom: 20px; 
+			font-weight: 
+			bold; cursor: pointer; 
+			}
+		
+        .menu:hover {
+			opacity: 0.8;#
+			}
+			
+        .header { 
+			display: flex; 
+			justify-content: space-between; 
+			align-items: center; 
+			margin-bottom: 30px; 
+		}
+		
+        .add-project-btn { 
+			background-color: pink; 
+			color: white; 
+			padding: 10px 20px; 
+			cursor: pointer; 
+			border-radius: 5px; 
+		}
+		
+        .add-project-btn:hover { 
+			opacity: 0.9;	 
+		}
+		
+        body {
+            background-color: #ADD8E6;
+            font-family: poppins;
+        }
+        h2 {
+            color: white;
+            text-align: center;
+            text-decoration: underline;
+            text-decoration-color: white;
+        }
+        p {
+            font-size: 20px;
+        }
+        #main {
+            margin-left: auto;
+            margin-right: auto;
+            width: 500px;
+            margin-top: 2%;
+            background-color: pink;
+            border: 2px solid white;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input[type="text"], input[type="password"], input[type="date"] {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid white;
+            color: white;
+            padding: 8px 0;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        h1 {
+            text-align: left;
+            color: white;
+        }
+        p, a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+        input[type="submit"] {
+            background-color: white;
+            color: pink;
+            border: 2px solid pink;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- side bar navigation -->
+        <div class="sidebar">
+            <div class="menu">
+				<a href="dashboard.php" style="color: white; text-decoration: none;">Dashboard</a>
+			</div>
+            <div class="menu">
+				<a href="project_list.php" style="color: white; text-decoration: none;">Projects</a>
+			</div>
+            <div class="menu">
+				<a href="staff_register.php" style="color: white; text-decoration: none;">Register Staff</a>
+			</div>
+            <div class="menu">
+              <a href="tasks_list.php" style="color: white; text-decoration: none;">Create Tasks</a>
+            </div>
+        </div>
+		
+		<div id="main">
+
+                <h2>Create Project</h2>
+                <form action="create_project.php" method="POST">
+                    <label>Project Title</label><br>
+                    <input type="text" name="project_title" required><br><br>
+                    <label>Project Owner</label><br>
+                    <input type="text" name="project_owner" required><br><br>
+                    <label>Start Date</label><br>
+                    <input type="date" name="project_start" required><br><br>
+                    <label>End Date</label><br>
+                    <input type="date" name="project_end" required><br><br>
+                    <input type="submit" value="Create Project">
+                </form>
+        </div>
+	</div>
+   
+</body>
+</html>
